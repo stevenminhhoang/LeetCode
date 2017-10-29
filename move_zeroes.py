@@ -10,4 +10,4 @@ def moveZeroes(nums):
             zero+= 1
     return nums
 
-print(moveZeroes([4,2,3,1]))
+print(moveZeroes([0,0,4,0,2,3,1]))

@@ -6,4 +6,6 @@ def twoSum(nums, target):
         else:
             return [dic[n], i]
 
+
+
 print(twoSum([3,3], 6))
