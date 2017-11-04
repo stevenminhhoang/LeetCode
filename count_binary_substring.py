@@ -1,6 +1,14 @@
 def count_binary_substring(s):
-   count = 0
-   zeros = 0
-   ones = 0
-   for i in range(len(s)-1):
-       for j in range(i+1,len(s)):
+    prev = 0
+    cur = 1
+    ans = 0
+    for i in range(1,len(s)):
+        if s[i] == s[i-1]:
+            cur += 1
+        else:
+            pre = cur
+            cur = 1
+        if prev > cur:
+            ans += 1
+
+    return ans
