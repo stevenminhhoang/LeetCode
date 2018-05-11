@@ -11,4 +11,4 @@ def singleNumber(nums):
         if val == 1:
             return key
 
-print(singleNumber([1,1,2,2,3]))
+print(singleNumber([1,1,2,2,3,3,999]))
