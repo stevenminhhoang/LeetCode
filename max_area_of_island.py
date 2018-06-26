@@ -1,23 +1,20 @@
-def max_area_of_island(grid):
-    seen = set()
-
-    def area(r, c):
-        if not (0 <= r < len(grid) and 0 <= c < len(grid[0]) and (r, c) not in seen and grid[r][c]):
+def maxAreaOfIsland(self, grid):
+    def get_area(grid, row, col):
+        if row < 0 or col < 0 or row >= len(grid) or col >= len(grid[0]):
             return 0
-        seen.add((r, c))
 
-        return (1 + area(r+1, c) + area(r-1, c) + area(r, c+1) + area(r, c-1))
+        if grid[row][col] == 0:
+            return 0
 
-    return max(area(r, c) for r in range(len(grid)) for c in range(len(grid[0])))
+        grid[row][col] = 0
 
-# print(max_area_of_island([[0,0,1,0,0,0,0,1,0,0,0,0,0],
-#  [0,0,0,0,0,0,0,1,1,1,0,0,0],
-#  [0,1,1,0,1,0,0,0,0,0,0,0,0],
-#  [0,1,0,0,1,1,0,0,1,0,1,0,0],
-#  [0,1,0,0,1,1,0,0,1,1,1,0,0],
-#  [0,0,0,0,0,0,0,0,0,0,1,0,0],
-#  [0,0,0,0,0,0,0,1,1,1,0,0,0],
-#  [0,0,0,0,0,0,0,1,1,0,0,0,0]]
-# ))
+        return 1 + get_area(grid, row - 1, col) + get_area(grid, row + 1, col) + get_area(grid, row, col - 1) + get_area(grid, row, col + 1)
 
-# print(max_area_of_island([[1,,1], [1,0,1]]))
+    max_area = 0
+    for row in range(len(grid)):
+        for col in range(len(grid[0])):
+            if grid[row][col] == 1:
+                size = get_area(grid, row, col)
+                max_area = max(size, max_area)
+
+    return max_area
