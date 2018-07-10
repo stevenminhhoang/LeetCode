@@ -1,16 +1,15 @@
-def permutation(string):
-    l = []
-    backtrack(l, list(string), 0)
-    return l
+def permutation(nums):
+    list = []
+    backtrack(list, nums, 0)
+    return list
 
-def backtrack(list, string, start):
-    if start == len(string):
-        list.append(''.join(string))
+def backtrack(list, nums, start):
+    if start == len(nums):
+        list.append(nums[:])
+    for i in range(start, len(nums)):
+        nums[start], nums[i] = nums[i], nums[start]
+        backtrack(list, nums, start + 1)
+        nums[i], nums[start] = nums[start], nums[i]
 
-    for i in range(start, len(string)):
-        string[i], string[start] = string[start], string[i]
-        backtrack(list, string, start + 1)
-        string[i], string[start] = string[start], string[i]
 
-
-print(permutation("ABC"))
+print(permutation([1, 2, 3]))
