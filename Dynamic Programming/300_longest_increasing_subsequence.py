@@ -38,3 +38,4 @@ def longest_increasing_subsequence(nums):
     return ans
 
 print(longest_increasing_subsequence([1,3,6,7,9,4,10,5,6]))
+print(longest_increasing_subsequence([1,3,5,4,7]))
