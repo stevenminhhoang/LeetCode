@@ -16,7 +16,7 @@ def word_search(grid, word):
             return True
 
         visited[i][j] = False
-        # return False
+        return False
 
 
     visited = [[0 for j in range(len(grid[0]))] for i in range(len(grid))]
