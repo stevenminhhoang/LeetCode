@@ -16,14 +16,30 @@ class Trie(object):
             current = current.children[char]
         current.is_word = True
 
-    def search(self, word):
-        current = self.root
-        for char in word:
-            if char not in current.children:
-                return False
-            current = current.children[char]
+    # def search(self, word):
+    #     current = self.root
+    #     for char in word:
+    #         if char not in current.children:
+    #             return False
+    #         current = current.children[char]
+    #
+    #     return current.is_word
 
-        return current.is_word
+    # DFS
+    def search(self, word):
+        def dfs(curr, word):
+            if len(word) == 0:
+                return curr.is_word
+
+            first = word[0]
+            if first not in curr.children:
+                return False
+
+            return dfs(curr.children[first], word[1:])
+
+        return dfs(self.root, word)
+
+
 
     def startsWith(self, prefix):
         current = self.root
@@ -35,9 +51,9 @@ class Trie(object):
         return True
 
 
-# trie = Trie()
-# trie.insert("apple")
-# print(trie.search("apple"))
+trie = Trie()
+trie.insert("apple")
+print(trie.search("apple"))
 # print(trie.search("app"))
 # print(trie.startsWith("app"))
 # trie.insert("app")
