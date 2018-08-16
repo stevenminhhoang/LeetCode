@@ -1,28 +1,57 @@
-# Definition for a binary tree node.
-class TreeNode(object):
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
+# Recursive
+def binaryTreePaths(self, root):
+    if not root:
+        return []
 
-class Solution(object):
-    def binaryTreePaths(self, root):
-        """
-        :type root: TreeNode
-        :rtype: List[str]
-        """
-        self.ans = []
-        if not root:
-            return []
+    def dfs(root, res, temp):
+        if not root.left and not root.right:
+            res.append(temp + str(root.val))
+            return res
+        if root.left:
+            dfs(root.left, res, temp + str(root.val) + "->")
+        if root.right:
+            dfs(root.right, res, temp + str(root.val) + "->")
 
-        def dfs(node, ls):
-            if node:
-                if not node.left and not node.right:
-                    self.ans.append(ls + str(node.val))
+    res = []
+    dfs(root, res, "")
+    return res
 
-                dfs(node.left, ls + str(node.val) + "->")
-                dfs(node.right, ls + str(node.val) + "->")
+# BFS
+def binaryTreePaths(self, root):
+    if not root:
+        return []
+
+    res = []
+    queue = collections.deque()
+    queue.append((root, ""))
+    while queue:
+        node, temp = queue.popleft()
+        if not node.left and not node.right:
+            res.append(temp + str(node.val))
+        if node.left:
+            queue.append((node.left, temp + str(node.val) + "->"))
+        if node.right:
+            queue.append((node.right, temp + str(node.val) + "->"))
+
+    return res
 
 
-        dfs(root, "")
-        return self.ans
+
+# DFS
+def binaryTreePaths(self, root):
+    if not root:
+        return []
+
+    stack = []
+    res = []
+    stack.append((root, ""))
+    while stack:
+        node, temp = stack.pop()
+        if not node.left and not node.right:
+            res.append(temp + str(node.val))
+        if node.right:
+            stack.append((node.right, temp + str(node.val) + "->"))
+        if node.left:
+            stack.append((node.left, temp + str(node.val) + "->"))
+
+    return res
