@@ -1,3 +1,4 @@
+# O(n + m) n is number of edges, m is number of nodes
 from collections import deque
 def count_components(n, edges):
     # DFS
@@ -19,7 +20,7 @@ def count_components(n, edges):
         if not visited[i]:
             dfs(i, graph, visited)
             ans += 1
-    
+
     return ans
 
     # BFS
@@ -34,11 +35,12 @@ def count_components(n, edges):
     for i in range(n):
         if not visited[i]:
             queue.append(i)
+            visited[index] = 1
             while queue:
                 index = queue.popleft()
-                visited[index] = 1
                 for neighbor in graph[index]:
                     if not visited[neighbor]:
+                        visited[neighbor] = 1
                         queue.append(neighbor)
             count += 1
 
