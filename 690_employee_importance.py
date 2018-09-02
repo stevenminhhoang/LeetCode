@@ -39,3 +39,18 @@ def getImportance(self, employees, id):
             queue.append(dic[subordinate])
 
     return ans
+
+
+# DFS
+def getImportance(self, employees, id):
+    def dfs(id, dic):
+        e = dic[id]
+        total = 0
+        total += e.importance
+        for sub in e.subordinates:
+            total += dfs(sub, dic)
+
+        return total
+
+    dic = {e.id: e for e in employees}
+    return dfs(id, dic)

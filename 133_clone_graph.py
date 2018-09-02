@@ -29,3 +29,23 @@ class Solution:
                 visited[n.label].neighbors.append(visited[neighbor.label])
 
         return new_node
+
+# Recursive DFS:
+def cloneGraph(self, node):
+    if not node:
+        return
+
+    dic = {}
+    node_copy = UndirectedGraphNode(node.label)
+    dic[node] = node_copy
+    self.dfs(node, dic)
+    return node_copy
+
+def dfs(self, node, dic):
+    for nei in node.neighbors:
+        if nei not in dic:
+            nei_copy = UndirectedGraphNode(nei.label)
+            dic[nei] = nei_copy
+            self.dfs(nei, dic)
+
+        dic[node].neighbors.append(dic[nei])

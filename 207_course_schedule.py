@@ -16,7 +16,7 @@ def course_schedule(num_courses, prerequisites):
 
     while queue:
         course = queue.popleft()
-        topologya.append(course)
+        topology.append(course)
         for n in graph[course]:
             in_degree[n] -= 1
             if in_degree[n] == 0:
