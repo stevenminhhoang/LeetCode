@@ -1,3 +1,4 @@
+# O(h) h is height of tree
 # Iterative
 def lowestCommonAncestor(root, p, q):
     while root:
