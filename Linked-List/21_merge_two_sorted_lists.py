@@ -40,6 +40,10 @@ class Solution(object):
                 l2 = l2.next
             curr = curr.next
 
-        curr.next = l1 if l1 else l2
+        if l1:
+            curr.next = l1
+
+        if l2:
+            curr.next = l2
 
         return head.next
