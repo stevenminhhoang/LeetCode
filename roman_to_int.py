@@ -9,4 +9,4 @@ def roman_to_int(s):
 
     return ans + roman[s[-1]]
 
-print(roman_to_int())
+print(roman_to_int("MCMXCIV"))
