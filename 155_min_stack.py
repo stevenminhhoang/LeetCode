@@ -1,12 +1,10 @@
-import collections
-class MinStack(object):
-    element_with_cache_min = collections.namedtuple('element_with_cache_min', ('element', 'min'))
+class MinStack:
 
     def __init__(self):
         """
         initialize your data structure here.
         """
-        self._element_with_cache_min = []
+        self.stack = []
 
 
     def push(self, x):
@@ -14,33 +12,42 @@ class MinStack(object):
         :type x: int
         :rtype: void
         """
-        self._element_with_cache_min.append(self.element_with_cache_min(x, x if len(self._element_with_cache_min) == 0 else min(x, self.getMin())))
+        curr_min = self.getMin()
+        if curr_min == None or x < curr_min:
+            curr_min = x
+
+        self.stack.append((x, curr_min))
 
     def pop(self):
         """
         :rtype: void
         """
-        return self._element_with_cache_min.pop().element
+        self.stack.pop()
 
     def top(self):
         """
         :rtype: int
         """
-        return self._element_with_cache_min[-1].element
+        if not self.stack:
+            return None
+        else:
+            return self.stack[-1][0]
+
 
     def getMin(self):
         """
         :rtype: int
         """
-        return self._element_with_cache_min[-1].min
+        if not self.stack:
+            return None
+        else:
+            return self.stack[-1][1]
 
 
 
-A = MinStack()
-A.push(-2)
-A.push(0)
-A.push(-3)
-print(A.getMin())
-A.pop()
-print(A.top())
-print(A.getMin())
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(x)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()

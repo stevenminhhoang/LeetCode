@@ -1,3 +1,4 @@
+# O(n)
 import collections
 def min_window_substring(s, t):
     count = collections.Counter()

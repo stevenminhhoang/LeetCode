@@ -1,3 +1,4 @@
+# O(n)
 import collections
 def find_anagrams(s, p):
     if not s or len(s) < len(p):
