@@ -1,16 +1,18 @@
-def backspace_compare(S, T):
+# O(n) space using stack
+def backspaceCompare(S, T):
     stack_s, stack_t = [], []
     for char in S:
-        if char == '#' and len(stack_s) > 0:
+        if char == "#" and stack_s:
             stack_s.pop()
-        elif stack_s:
+        elif char != "#":
             stack_s.append(char)
+
     for char in T:
-        if char == '#' and len(stack_t) > 0:
+        if char == "#" and stack_t:
             stack_t.pop()
-        elif stack_t:
+        elif char != "#":
             stack_t.append(char)
 
     return stack_s == stack_t
 
-# O(N) time O(1) space
+print(backspaceCompare("ab#c", "ad#c"))
