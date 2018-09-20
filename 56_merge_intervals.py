@@ -1,3 +1,4 @@
+# O(n*log(n))
 def merge_intervals(intervals):
     if not intervals:
         return []
