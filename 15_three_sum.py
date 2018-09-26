@@ -1,3 +1,4 @@
+# O(n^2)
 def three_sum(nums, target):
     ans = set()
     nums.sort()

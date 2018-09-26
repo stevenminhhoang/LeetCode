@@ -1,3 +1,4 @@
+# O(n^2)
 class TicTacToe:
 
     def __init__(self, n):
@@ -53,9 +54,23 @@ class TicTacToe:
         return 0
 
 
+# O(n) time O(1) space
+    def move(self, row, col, player):
+        if player == 1:
+            add = 1
+        else:
+            add = -1
 
+        self.rows[row] += add
+        self.cols[col] += add
+        if row == col:
+            self.diagonals += add
+        if row + col == self.n - 1:
+            self.antidiagonals += add
 
+        if abs(self.rows[row]) == self.n or abs(self.cols[col]) == self.n or abs(self.diagonals) == self.n or abs(self.antidiagonals) == self.n:
+            return player
 
-# Your TicTacToe object will be instantiated and called as such:
-# obj = TicTacToe(n)
-# param_1 = obj.move(row,col,player)
+        return 0
+
+)
