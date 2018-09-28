@@ -9,14 +9,14 @@ def course_schedule(num_courses, prerequisites):
 
 
     queue = collections.deque()
-    topology = []
+    count = 0
     for i, degree in in_degree.items():
         if degree == 0:
             queue.append(i)
 
     while queue:
         course = queue.popleft()
-        topology.append(course)
+        count += 1
         for n in graph[course]:
             in_degree[n] -= 1
             if in_degree[n] == 0:
