@@ -1,3 +1,4 @@
+# O(n) O(1) space
 def majority_element(nums):
     candidate = None
     count = 0
