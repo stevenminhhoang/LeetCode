@@ -1,5 +1,5 @@
 # BFS
-# O(V * E)
+# O(V + E)
 import collections
 def valid_tree(n, edges):
     visited = set()
