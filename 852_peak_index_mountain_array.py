@@ -9,4 +9,4 @@ def peak_index(A):
 
     return left
 
-print(peak_index([0,2,1,0]))
+print(peak_index([1,2]))
