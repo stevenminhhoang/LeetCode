@@ -1,28 +1,30 @@
 # BFS topological sort
 import collections
 def course_schedule(num_courses, prerequisites):
-    graph = {i: set() for i in range(num_courses)}
-    in_degree = {i: 0 for i in range(num_courses)}
+    graph = {x: [] for x in range(num_courses)}
+    indegrees = [0] * num_courses
+    queue = collections.deque()
 
     for pre in prerequisites:
-        graph[pre[1]].add(pre[0])
-        in_degree[pre[0]] += 1
+        graph[pre[1]].append(pre[0])
+        indegrees[pre[0]] += 1
 
-    queue = collections.deque()
-    count = 0
-    for i, degree in in_degree.items():
-        if degree == 0:
+    for i in range(num_courses):
+        if indegrees[i] == 0:
             queue.append(i)
 
     while queue:
         course = queue.popleft()
-        count += 1
-        for n in graph[course]:
-            in_degree[n] -= 1
-            if in_degree[n] == 0:
-                queue.append(n)
+        for nei in graph[course]:
+            indegrees[nei] -= 1
+            if indegrees[nei] == 0:
+                queue.append(nei)
 
-    return count == num_courses
+    for i in range(num_courses):
+        if indegrees[i] != 0:
+            return False
+
+    return True
 
 print(course_schedule(2, [[1,0]]))
 
