@@ -27,4 +27,4 @@ def circularArrayLoop(nums):
 
     return False
 
-print([2, -1, 1, 2, 2])
+print(circularArrayLoop([2, -1, 1, 2, 2]))
