@@ -1,3 +1,4 @@
+# O(row * col * 4^m * m) m is length of word
 from Trie import Trie
 def word_search_II(board, words):
     def dfs(board, visited, res, string, i, j, trie):

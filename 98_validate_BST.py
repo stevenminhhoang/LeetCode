@@ -19,7 +19,7 @@ class Solution:
                 root = root.left
 
             root = stack.pop()
-            if pre and root.val <= pre.val:
+            if pre and pre.val >= root.val:
                 return False
 
             pre = root
