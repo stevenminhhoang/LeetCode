@@ -12,4 +12,4 @@ def my_pow(x, n):
 
     return my_pow(x * x, n // 2)
 
-print(my_pow(2.000000, -2))
+print(my_pow(2.000000, 3))

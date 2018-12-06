@@ -2,7 +2,6 @@ def permutation_unique(nums):
     def backtrack(lis, visited, nums, temp):
         if len(temp) == len(nums):
             lis.append(temp[:])
-            print("Ans: {0}".format(lis))
 
         for i in range(0, len(nums)):
             if visited[i] == True:
@@ -12,14 +11,10 @@ def permutation_unique(nums):
 
             temp.append(nums[i])
             visited[i] = True
-            print(temp)
-            print("Visited: {0}".format(visited))
             backtrack(lis, visited, nums, temp)
             # backtrack
             temp.pop()
             visited[i] = False
-            print("Backtrack: {0}".format(temp))
-            print("Visited: {0}".format(visited))
 
     nums.sort()
     lis = []

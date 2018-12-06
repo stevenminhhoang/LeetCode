@@ -20,5 +20,6 @@ def merge_intervals(intervals):
 
     return res
 
-print(merge_intervals([[1,4],[4,5]]))
-print(merge_intervals([[1,3],[2,6],[8,10],[15,18]]))
+# print(merge_intervals([[1,4],[4,5]]))
+print(merge_intervals([[1,4],[2,3]]))
+# print(merge_intervals([[1,3],[2,6],[8,10],[15,18]]))
