@@ -1,6 +1,6 @@
 map = {"a": "apple", "b": {"b": "blueberry", "c": "cranberry"}}
 dic = {"a": "apple", "b": "blueberry", "c": "cranberry"}
-# string = "a:apple,b:blueberry,c:cranberry"
+string = "a:apple,b:blueberry,c:cranberry"
 
 def dict_to_string(dic):
     if len(dic.keys()) == 0:
@@ -20,8 +20,8 @@ def dict_to_string(dic):
     return res
 
 
-string = dict_to_string(map)[1:-1]
-string2 = dict_to_string(dic)[1:-1]
+# string = dict_to_string(map)[1:-1]
+# string2 = dict_to_string(dic)[1:-1]
 # print(string2)
 
 def string_to_dict(string):
@@ -32,12 +32,13 @@ def string_to_dict(string):
     while i < len(string):
         if string[i] == ':':
             key = string[start:i]
-            stack.append(key)
+            # stack.append(key)
             start = i + 1
         elif string[i] == ',':
             val = string[start:i]
-            dic[stack.pop()] = val
+            # dic[stack.pop()] = val
             start = i + 1
+            dic[key] = val
         elif string[i] == '{':
             end = i + 1
             while end < len(string) and string[end] != '}':

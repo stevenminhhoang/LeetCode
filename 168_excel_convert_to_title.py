@@ -6,3 +6,13 @@ def convertToTitle(n):
    return ord('A')
 
 print(convertToTitle(3))
+
+def excel_title(n):
+    res = []
+    while n:
+        res.append(chr((n - 1) % 26 + ord("A")))
+        n = (n - 1) // 26
+
+    return "".join(res[::-1])
+
+print(excel_title(701))

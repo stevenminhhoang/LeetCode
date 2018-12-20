@@ -6,6 +6,7 @@ class TreeNode:
         self.right = None
 
 class Solution:
+    # Iterative
     def isValidBST(self, root):
         """
         :type root: TreeNode
@@ -26,3 +27,15 @@ class Solution:
             root = root.right
 
         return True
+
+    # Recursive
+     def isValidBST(self, root):
+        def isValid(node, minVal, maxVal):
+            if not node:
+                return True
+            if node.val <= minVal or node.val >= maxVal:
+                return False
+
+            return isValid(node.left, minVal, node.val) and isValid(node.right, node.val, maxVal)
+
+        return isValid(root, float("-inf"), float("inf"))
